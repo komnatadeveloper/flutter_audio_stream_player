@@ -1,16 +1,44 @@
-# flutter_audio_stream_player
+# Flutter Audio Players from URL with Both Via flutter_sound_lite & audioplayers packages
 
 A new Flutter project.
 
-## Getting Started
+## Important Settings for audioplayers package
 
-This project is a starting point for a Flutter application.
+on android/app/src/main/AndroidManifest.xml file
 
-A few resources to get you started if this is your first Flutter project:
+```
+<manifest 
+   <uses-permission android:name="android.permission.INTERNET" />
+  <application 
+      android:usesCleartextTraffic="true"
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+on android/build.gradle
+```
+  ext.kotlin_version = '1.6.10'
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+on android/app/build.gradle
+```
+   compileSdkVersion 31
+   minSdkVersion 23
+   targetSdkVersion 29
+```
+
+
+
+
+## ScreenShots
+- Home Screen
+<img src="assets/home_screen.png" width=250>
+
+
+- audioplayers package
+<img src="assets/audio_players.png" width=250>
+
+
+- flutter_sound_lite package
+<img src="assets/flutter_sound_lite.png" width=250>
+
+
+...happy hacking...
