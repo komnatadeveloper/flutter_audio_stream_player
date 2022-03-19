@@ -150,7 +150,7 @@ class _AudioStreamPlayerViaSoundLiteState extends State<AudioStreamPlayerViaSoun
   Widget slider () {
     return Slider.adaptive(
       min: 0.0,
-      max: duration.inSeconds.toDouble(),
+      max: duration.inSeconds.toDouble() + 0.01,
       
       value: position.inSeconds.toDouble(), 
       onChanged: ( double val) {

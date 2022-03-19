@@ -27,6 +27,19 @@ on android/app/build.gradle
 
 
 
+## IOS Settings
+
+
+- FOR ->  Try replacing 'com.example' with your signing id in Xcode: open ios/Runner.xcworkspace ERROR
+open XCode -> Project -> General -> Identity -> UPDATE BUNDLE IDENTIFIER ->  Remove example
+
+
+- FOR -> Undefined symbol: ___gxx_personality_v0 ERROR
+Use Solution -> https://github.com/Canardoux/flutter_sound/issues/666
+
+
+
+
 
 ## ScreenShots
 - Home Screen

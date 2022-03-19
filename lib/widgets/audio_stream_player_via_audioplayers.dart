@@ -73,6 +73,7 @@ class _AudioStreamPlayerViaAudioplayersState extends State<AudioStreamPlayerViaA
   bool isPlaying = false;
 
   String musicStreamUrl = '';
+  // String musicStreamUrl = 'https://assets.mixkit.co/music/preview/mixkit-trip-hop-vibes-149.mp3';
 
 
 
@@ -100,19 +101,24 @@ class _AudioStreamPlayerViaAudioplayersState extends State<AudioStreamPlayerViaA
 
 
   Widget slider () {
-    return Slider.adaptive(
-      min: 0.0,
-      max: duration.inSeconds.toDouble(),
-      
-      value: position.inSeconds.toDouble(), 
-      onChanged: ( double val) {
-        setState(() { 
-          audioPlayer.seek(
-             Duration( seconds: val.toInt() )
-          );
-        });
-      }
-    );
+    try {
+
+      return Slider.adaptive(
+        min: 0.0,
+        max: duration.inSeconds.toDouble() + 0.1,
+        
+        value: position.inSeconds.toDouble(), 
+        onChanged: ( double val) {
+          setState(() { 
+            audioPlayer.seek(
+              Duration( seconds: val.toInt() )
+            );
+          });
+        }
+      );
+    } catch (err ) {
+      return Text('ERROR ON SLIDER');
+    }
   }
 
 
@@ -173,8 +179,8 @@ class _AudioStreamPlayerViaAudioplayersState extends State<AudioStreamPlayerViaA
   @override
   void initState() {
     // TODO: implement initState
-    _textController = TextEditingController( text: '');
     super.initState();
+    _textController = TextEditingController( text: '');
     // play();
   }
 
@@ -246,8 +252,9 @@ class _AudioStreamPlayerViaAudioplayersState extends State<AudioStreamPlayerViaA
                   ),
                   const Icon( Icons.music_video, size: 150, color: Colors.blue,),
 
+                  if (musicStreamUrl != '') 
                   slider(),
-
+                  if (musicStreamUrl != '') 
                   InkWell(
                     onTap: () {
                       getAudio();
@@ -293,11 +300,11 @@ class _AudioStreamPlayerViaAudioplayersState extends State<AudioStreamPlayerViaA
                       } 
                       :  
                       () {
-                        setState(() {
                           musicStreamUrl = _textController.text;
                           _textController.text = '';
+                        setState(() {
                         });
-                        FocusScope.of(context).requestFocus(FocusNode());
+                        // FocusScope.of(context).requestFocus(FocusNode());
                       }, 
                     icon: const Icon(Icons.send, color: Colors.blue,),
                   )
